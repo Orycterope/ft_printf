@@ -6,19 +6,22 @@
 /*   By: tvermeil <tvermeil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/15 10:27:43 by tvermeil          #+#    #+#             */
-/*   Updated: 2015/12/15 19:06:01 by tvermeil         ###   ########.fr       */
+/*   Updated: 2015/12/15 20:24:56 by tvermeil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
+#include <stdio.h> //
 
 static int	get_next_precent_position(char *str)
 {
 	int		i;
 
 	i = 0;
-	while (str[i] != '\0' && str[i] != '%' && str[i + 1] != '%')
+	while (str[i] != '\0' && (str[i] != '%' ||
+			(str[i] == '%' && (str[i + 1] == '%' || str[i - 1] == '%'))))
 		i++;
+	printf("percent at %d : %c\n", i, str[i]);
 	return (i);
 }
 

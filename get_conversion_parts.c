@@ -6,11 +6,12 @@
 /*   By: tvermeil <tvermeil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/15 13:27:20 by tvermeil          #+#    #+#             */
-/*   Updated: 2015/12/15 13:42:35 by tvermeil         ###   ########.fr       */
+/*   Updated: 2015/12/16 17:04:02 by tvermeil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+#include "get_conversion_parts.h"
 
 char			*get_flags(char *str)
 {
@@ -19,7 +20,7 @@ char			*get_flags(char *str)
 	i = 0;
 	while (str[i] == '#' || str[i] == '0' || str[i] == '-' || str[i] == '+')
 		i++;
-	return (ft_strsub(str, str, i));
+	return (ft_strsub(str, 0, i));
 }
 
 char			*get_width(char *str)
@@ -27,9 +28,9 @@ char			*get_width(char *str)
 	int		i;
 
 	i = 0;
-	while (str[i] >= '0' && str[i] <= '9');
+	while (str[i] >= '0' && str[i] <= '9')
 		i++;
-	return (ft_strsub(str, str, i));
+	return (ft_strsub(str, 0, i));
 }
 
 char			*get_precision(char *str)
@@ -39,14 +40,27 @@ char			*get_precision(char *str)
 	i = 0;
 	if (*str == '.')
 		i++;
-	while (i > 0 && str[i] >= '0' && str[i] <= '9');
+	while (i > 0 && str[i] >= '0' && str[i] <= '9')
 		i++;
-	return (ft_strsub(str, str, i));
+	return (ft_strsub(str, 0, i));
 }
 
-char	get_conversion(char *str)
+char			*get_modifier(char *str)
 {
-	char	conversion_chars[15];
+	int		i;
+
+	i = 0;
+	if ((*str == 'h' && *(str + 1) == 'h')
+			|| (*str == 'l' && *(str + 1) == 'l'))
+		i = 2;
+	else if (*str == 'h' || *str == 'l' || *str == 'j' || *str == 'z')
+		i = 1;
+	return (ft_strsub(str, 0, i));
+}
+
+char			get_conversion(char *str)
+{
+	char	*conversion_chars;
 
 	conversion_chars = "sSpdDioOuUxXcC";
 	if (ft_strchr(conversion_chars, *str) != NULL)

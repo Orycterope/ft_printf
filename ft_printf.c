@@ -6,12 +6,11 @@
 /*   By: tvermeil <tvermeil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/15 10:27:43 by tvermeil          #+#    #+#             */
-/*   Updated: 2015/12/15 20:24:56 by tvermeil         ###   ########.fr       */
+/*   Updated: 2015/12/16 17:44:30 by tvermeil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
-#include <stdio.h> //
 
 static int	get_next_precent_position(char *str)
 {
@@ -21,60 +20,67 @@ static int	get_next_precent_position(char *str)
 	while (str[i] != '\0' && (str[i] != '%' ||
 			(str[i] == '%' && (str[i + 1] == '%' || str[i - 1] == '%'))))
 		i++;
-	printf("percent at %d : %c\n", i, str[i]);
 	return (i);
 }
 
 static char	*process_conversion(char *str, va_list args, int *length, char **end)
 {
-	char	*remove_me;
+	/* Dummy function */
 
+	char			*remove_me;
+	t_conversion	*conv;
+
+	conv = save_conversion_format(str);
+	if (conv == NULL)
+	{
+		*length += 1;
+		return (NULL);
+	}
 	remove_me = ft_strdup("VWXYZ");
-	*length += 2;
-	*end += ft_strlen(remove_me);
-
+	**end = '\0';
+	*length += ft_strlen(remove_me);
+	*end += conv->length;
 	return (remove_me);
 }
 
 
-static char	*replace_conversion(const char *str, va_list args)
+static void replace_conversion(char **str, va_list args)
 {
-	char	*s1;
 	char	*s2;
-	char	*old;
+	char	*old1;
+	char	*old2;
 	char	*insert;
 	int		i;
 
-	s1 = ft_strdup(str);
-	i = get_next_precent_position(s1);
-	while (s1[i] != '\0')
+	*str = ft_strdup(*str);
+	i = get_next_precent_position(*str);
+	while ((*str)[i] != '\0')
 	{
-		old = s1;
-		s2 = &s1[i];
-		*s2 = '\0';
-		insert = process_conversion(&s1[i], args, &i, &s2);
-		s1 = ft_strjoin(old, insert);
-		free(insert);
-		free(old);
-		old = s1;
-		s1 = ft_strjoin(old, s2);
-		i += get_next_precent_position(&s1[i]);
-		free(old);
+		old1 = *str;
+		s2 = &((*str)[i]);
+		insert = process_conversion(s2, args, &i, &s2);
+		if (insert != NULL)
+		{
+			old2 = ft_strjoin(*str, insert);
+			free(insert);
+			*str = ft_strjoin(old2, s2);
+			free(old1);
+			free(old2);
+			i += get_next_precent_position(&((*str)[i]));
+		}
 	}
-	return (s1);
 }
 
 int			ft_printf(const char *format, ...)
 {
 	va_list args;
-	char	*final;
 	int		count;
 
 	va_start(args, format);
-	final = replace_conversion(format, args);
-	count = ft_strlen(final);
-	ft_putstr(final);
-	free(final);
+	replace_conversion((char **)&format, args);
+	count = ft_strlen(format);
+	ft_putstr(format);
+	free((void*)format);
 	va_end(args);
 	return (count);
 }

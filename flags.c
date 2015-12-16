@@ -1,22 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf.h                                        :+:      :+:    :+:   */
+/*   flags.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tvermeil <tvermeil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/12/15 10:30:55 by tvermeil          #+#    #+#             */
-/*   Updated: 2015/12/16 19:05:47 by tvermeil         ###   ########.fr       */
+/*   Created: 2015/12/16 19:04:36 by tvermeil          #+#    #+#             */
+/*   Updated: 2015/12/16 19:15:21 by tvermeil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_PRINTF_H
-# define FT_PRINTF_H
-# include <stdarg.h>
-# include "libft.h"
-# include "read_conversion.h"
-# include "flags.h"
+#include "flags.h"
 
-int		ft_printf(const char *format, ...);
+static char	*sign_wrapper(char *str, t_conversion *conv)
+{
 
-#endif
+}
+
+static char	*space_wrapper(char	*str, t_conversion *conv)
+{
+	char	*nbr;
+	char	*left;
+	char	*right;
+	char	*final;
+
+	return (0);
+}
+
+static char	*zero_wrapper(char *str, t_conversion *conv)
+{
+
+}
+
+char		*process_flags(char *str, t_conversion *conv)
+{
+
+}

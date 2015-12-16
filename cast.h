@@ -1,22 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf.h                                        :+:      :+:    :+:   */
+/*   cast.h                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tvermeil <tvermeil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/12/15 10:30:55 by tvermeil          #+#    #+#             */
-/*   Updated: 2015/12/16 19:05:47 by tvermeil         ###   ########.fr       */
+/*   Created: 2015/12/16 20:00:29 by tvermeil          #+#    #+#             */
+/*   Updated: 2015/12/16 20:03:09 by tvermeil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_PRINTF_H
-# define FT_PRINTF_H
-# include <stdarg.h>
-# include "libft.h"
-# include "read_conversion.h"
-# include "flags.h"
+#ifndef CAST_H
+# define CAST_H
+# include "printf.h"
 
-int		ft_printf(const char *format, ...);
+long long	get_arg(va_list args, t_conversion *conv);
 
 #endif

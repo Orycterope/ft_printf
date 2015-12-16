@@ -6,11 +6,10 @@
 /*   By: tvermeil <tvermeil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/15 13:27:20 by tvermeil          #+#    #+#             */
-/*   Updated: 2015/12/16 17:04:02 by tvermeil         ###   ########.fr       */
+/*   Updated: 2015/12/16 23:50:41 by tvermeil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
 #include "get_conversion_parts.h"
 
 char			*get_flags(char *str)

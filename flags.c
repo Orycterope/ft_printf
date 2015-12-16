@@ -6,7 +6,7 @@
 /*   By: tvermeil <tvermeil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/16 19:04:36 by tvermeil          #+#    #+#             */
-/*   Updated: 2015/12/16 23:09:37 by tvermeil         ###   ########.fr       */
+/*   Updated: 2015/12/16 23:26:50 by tvermeil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,9 +18,9 @@ static char	*sign_wrapper(char *str, t_conversion *conv)
 
 	if (*str != '-')
 	{
-		if (ft_srtchr('+', conv->flags) != NULL)
+		if (ft_strchr(conv->flags, '+') != NULL)
 			out = ft_strjoin("+", str);
-		else if (ft_srtchr(' ', conv->flags) != NULL)
+		else if (ft_strchr(conv->flags, ' ') != NULL)
 			out = ft_strjoin(" ", str);
 		free(str);
 	}
@@ -53,7 +53,7 @@ static char	*zero_wrapper(char *str, t_conversion *conv)
 
 	out = str;
 	length = ft_atoi(conv->width);
-	if (strchr('#', conv->flags != NULL))
+	if (ft_strchr(conv->flags, '#') != NULL)
 	{
 		if (conv->conversion == 'o')
 			length--;
@@ -98,19 +98,18 @@ char		*process_flags(char *str, t_conversion *conv)
 	char	*out;
 
 	out = str;
-	if (ft_srtchr('+', conv->flags) != NULL
-			|| ft_strchr(' ', conv->flags) != NULL)
+	if (ft_strchr(conv->flags, '+') != NULL
+			|| ft_strchr(conv->flags, ' ') != NULL)
 		out = sign_wrapper(out, conv);
-	if (ft_srtchr('#', conv->flags) != NULL
-			&& ft_srtchr('0', conv->flags) == NULL)
+	if (ft_strchr(conv->flags, '#') != NULL
+			&& ft_strchr(conv->flags, '0') == NULL)
 		out = hash_wrapper(out, conv);
-	if (ft_srtchr('-', conv->flags) != NULL)
+	if (ft_strchr(conv->flags, '-') != NULL)
 		out = minus_wrapper(out, conv);
-	else if (ft_srtchr('0', conv->flags) != NULL)
+	else if (ft_strchr(conv->flags, '0') != NULL)
 		out = zero_wrapper(out, conv);
-	if (ft_srtchr('#', conv->flags) != NULL
-			&& ft_srtchr('0', conv->flags) != NULL)
+	if (ft_strchr(conv->flags, '#') != NULL
+			&& ft_strchr(conv->flags, '0') != NULL)
 		out = hash_wrapper(out, conv);
-
 	return (out);
 }

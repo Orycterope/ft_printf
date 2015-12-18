@@ -1,20 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   flags.h                                            :+:      :+:    :+:   */
+/*   itoa_base.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tvermeil <tvermeil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/12/16 19:04:25 by tvermeil          #+#    #+#             */
-/*   Updated: 2015/12/18 15:51:58 by tvermeil         ###   ########.fr       */
+/*   Created: 2015/12/18 17:36:40 by tvermeil          #+#    #+#             */
+/*   Updated: 2015/12/18 17:41:19 by tvermeil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FLAGS_H
-# define FLAGS_H
+#ifndef ITOA_BASE_H
+# define ITOA_BASE_H
 # include "libft.h"
-# include "read_conversion.h"
 
-char	*process_flags(char *str, t_conversion *conv);
+char		*itoa_base(unsigned long long n, char *charset);
 
 #endif

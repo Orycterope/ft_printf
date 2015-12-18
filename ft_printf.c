@@ -6,7 +6,7 @@
 /*   By: tvermeil <tvermeil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/15 10:27:43 by tvermeil          #+#    #+#             */
-/*   Updated: 2015/12/16 23:20:46 by tvermeil         ###   ########.fr       */
+/*   Updated: 2015/12/18 15:58:42 by tvermeil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ static char	*process_conversion(char *str, va_list args, int *length, char **end
 		*length += 1;
 		return (NULL);
 	}
-	remove_me = ft_strdup("VWXYZ");
+	remove_me = ft_strdup("-12345");
 	remove_me = process_flags(remove_me, conv);
 	**end = '\0';
 	*length += ft_strlen(remove_me);

@@ -6,7 +6,7 @@
 /*   By: tvermeil <tvermeil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/15 10:27:43 by tvermeil          #+#    #+#             */
-/*   Updated: 2015/12/18 15:58:42 by tvermeil         ###   ########.fr       */
+/*   Updated: 2015/12/18 18:09:16 by tvermeil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@ static char	*process_conversion(char *str, va_list args, int *length, char **end
 	/* Dummy function */
 
 	char			*remove_me;
+	long long		argument;
 	t_conversion	*conv;
 
 	conv = save_conversion_format(str);
@@ -36,7 +37,8 @@ static char	*process_conversion(char *str, va_list args, int *length, char **end
 		*length += 1;
 		return (NULL);
 	}
-	remove_me = ft_strdup("-12345");
+	argument = get_arg(args, conv);
+	remove_me = convert_decimals(argument, conv);
 	remove_me = process_flags(remove_me, conv);
 	**end = '\0';
 	*length += ft_strlen(remove_me);

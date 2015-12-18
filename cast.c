@@ -6,7 +6,7 @@
 /*   By: tvermeil <tvermeil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/16 19:58:54 by tvermeil          #+#    #+#             */
-/*   Updated: 2015/12/16 21:57:01 by tvermeil         ###   ########.fr       */
+/*   Updated: 2015/12/18 18:20:30 by tvermeil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,9 +18,9 @@ static long long d_types(va_list args, t_conversion *conv)
 	if (*(conv->modifier) == 'h')
 	{
 		if (*(conv->modifier + 1) == 'h')
-			return ((long long)va_arg(args, signed char));
+			return ((long long)va_arg(args, int));
 		else
-			return ((long long)va_arg(args, short));
+			return ((long long)va_arg(args, int));
 	}
 	else if (*(conv->modifier) == 'l')
 	{
@@ -42,9 +42,9 @@ static long long o_types(va_list args, t_conversion *conv)
 	if (*(conv->modifier) == 'h')
 	{
 		if (*(conv->modifier + 1) == 'h')
-			return ((long long)va_arg(args, unsigned char));
+			return ((long long)va_arg(args, int));
 		else
-			return ((long long)va_arg(args, unsigned short));
+			return ((long long)va_arg(args, int));
 	}
 	else if (*(conv->modifier) == 'l')
 	{
@@ -66,12 +66,12 @@ static long long c_types(va_list args, t_conversion *conv)
 	if ((conv->conversion == 'c' && *(conv->modifier) == 'l')
 			|| conv->conversion == 'C')
 		return ((long long)va_arg(args, wint_t));
-	else if (conv.conversion == 'c')
-		return ((long long)va_arg(args, unsigned char));
+	else if (conv->conversion == 'c')
+		return ((long long)va_arg(args, int));
 	else if ((conv->conversion == 's' && *(conv->modifier) == 'l')
 			|| conv->conversion == 'S')
 		return ((long long)va_arg(args, wchar_t*));
-	else if (*(conv->conversion) == 's')
+	else if (conv->conversion == 's')
 		return ((long long)va_arg(args, char*));
 	else if (*(conv->modifier) == 'p')
 		return ((long long)va_arg(args, int*));
@@ -91,4 +91,5 @@ long long	get_arg(va_list args, t_conversion *conv)
 		return (c_types(args, conv));
 	else
 		printf("ERREUR DE MODIFIEUR\n");
+	return (0);
 }

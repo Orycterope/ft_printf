@@ -1,19 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   cast.h                                             :+:      :+:    :+:   */
+/*   decimals.h                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tvermeil <tvermeil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/12/16 20:00:29 by tvermeil          #+#    #+#             */
-/*   Updated: 2015/12/18 17:53:22 by tvermeil         ###   ########.fr       */
+/*   Created: 2015/12/18 18:04:22 by tvermeil          #+#    #+#             */
+/*   Updated: 2015/12/18 18:04:59 by tvermeil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef CAST_H
-# define CAST_H
+#ifndef DECIMALS_H
+# define DECIMALS_H
 # include "ft_printf.h"
 
-long long	get_arg(va_list args, t_conversion *conv);
+char	*convert_decimals(long long arg, t_conversion *conv);
 
 #endif

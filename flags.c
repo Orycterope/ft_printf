@@ -6,7 +6,7 @@
 /*   By: tvermeil <tvermeil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/16 19:04:36 by tvermeil          #+#    #+#             */
-/*   Updated: 2015/12/18 17:22:40 by tvermeil         ###   ########.fr       */
+/*   Updated: 2015/12/18 19:22:25 by tvermeil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,7 @@ static char	*sign_wrapper(char *str, t_conversion *conv)
 {
 	char	*out;
 
+	out = str;
 	if (*str != '-')
 	{
 		if (ft_strchr(conv->flags, '+') != NULL)
@@ -43,7 +44,7 @@ static char	*sign_wrapper(char *str, t_conversion *conv)
 
 static char	*minus_wrapper(char	*str, t_conversion *conv)
 {
-	int		length;
+	size_t	length;
 	char	*out;
 	char	*old;
 
@@ -61,7 +62,7 @@ static char	*minus_wrapper(char	*str, t_conversion *conv)
 
 static char	*zero_wrapper(char *str, t_conversion *conv)
 {
-	int		length;
+	size_t	length;
 	char	*out;
 	char	*old;
 	char	*left_part;

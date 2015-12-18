@@ -6,7 +6,7 @@
 /*   By: tvermeil <tvermeil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/18 17:28:40 by tvermeil          #+#    #+#             */
-/*   Updated: 2015/12/18 17:47:43 by tvermeil         ###   ########.fr       */
+/*   Updated: 2015/12/18 19:22:50 by tvermeil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,6 @@ char		*itoa_base(unsigned long long n, char *charset)
 {
 	char	*str;
 	int		base;
-	int		is_neg;
 	int		len;
 
 	base = ft_strlen(charset);

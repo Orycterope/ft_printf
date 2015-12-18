@@ -6,7 +6,7 @@
 /*   By: tvermeil <tvermeil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/15 10:30:55 by tvermeil          #+#    #+#             */
-/*   Updated: 2015/12/18 18:17:33 by tvermeil         ###   ########.fr       */
+/*   Updated: 2015/12/18 19:03:01 by tvermeil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@
 # include "flags.h"
 # include "itoa_base.h"
 # include "itoa.h"
-# include "decimals.h"
+# include "converter.h"
 # include "cast.h"
 
 int		ft_printf(const char *format, ...);

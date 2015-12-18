@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   decimals.h                                         :+:      :+:    :+:   */
+/*   converter.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tvermeil <tvermeil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/12/18 18:04:22 by tvermeil          #+#    #+#             */
-/*   Updated: 2015/12/18 18:04:59 by tvermeil         ###   ########.fr       */
+/*   Created: 2015/12/18 19:02:38 by tvermeil          #+#    #+#             */
+/*   Updated: 2015/12/18 19:02:46 by tvermeil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,6 @@
 # define DECIMALS_H
 # include "ft_printf.h"
 
-char	*convert_decimals(long long arg, t_conversion *conv);
+char	*get_converted_string(long long arg, t_conversion *conv);
 
 #endif

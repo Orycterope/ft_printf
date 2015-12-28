@@ -6,7 +6,7 @@
 /*   By: tvermeil <tvermeil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/18 19:02:28 by tvermeil          #+#    #+#             */
-/*   Updated: 2015/12/28 17:15:11 by tvermeil         ###   ########.fr       */
+/*   Updated: 2015/12/28 17:47:41 by tvermeil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ static char	*convert_decimals(long long arg, t_conversion *conv)
 		return (itoa_base(arg, "0123456789abcdef"));
 	else if (op == 'X')
 		return (itoa_base(arg, "0123456789ABCDEF"));
-	ft_putendl("erreur de conversion decimal");
+	ft_putendl("erreur de conversion decimal"); //
 	return (NULL);
 }
 
@@ -42,7 +42,7 @@ static char	*convert_strings(long long arg, t_conversion *conv)
 			return (ft_strdup("(null)"));
 		return (ft_strdup((char *)arg));
 	}
-	ft_putendl("erreur de conversion decimal");
+	ft_putendl("erreur de conversion string"); //
 	return (NULL);
 }
 
@@ -52,6 +52,6 @@ char		*get_converted_string(long long arg, t_conversion *conv)
 		return (convert_decimals(arg, conv));
 	else if (ft_strchr("s", conv->conversion) != NULL)
 		return (convert_strings(arg, conv));
-	ft_putendl("format non prit en charge");
+	ft_putendl("format non prit en charge"); //
 	return (NULL);
 }

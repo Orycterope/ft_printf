@@ -6,7 +6,7 @@
 /*   By: tvermeil <tvermeil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/16 19:04:36 by tvermeil          #+#    #+#             */
-/*   Updated: 2015/12/18 19:22:25 by tvermeil         ###   ########.fr       */
+/*   Updated: 2015/12/28 19:01:58 by tvermeil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -122,5 +122,6 @@ char		*process_flags(char *str, t_conversion *conv)
 	if (ft_strchr(conv->flags, '#') != NULL
 			&& ft_strchr(conv->flags, '0') != NULL)
 		out = hash_wrapper(out, conv);
+	out = space_wrapper(out, ft_atoi(conv->width));
 	return (out);
 }

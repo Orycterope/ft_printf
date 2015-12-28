@@ -1,29 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf.h                                        :+:      :+:    :+:   */
+/*   precision.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tvermeil <tvermeil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/12/15 10:30:55 by tvermeil          #+#    #+#             */
-/*   Updated: 2015/12/28 19:03:18 by tvermeil         ###   ########.fr       */
+/*   Created: 2015/12/28 18:57:09 by tvermeil          #+#    #+#             */
+/*   Updated: 2015/12/28 19:00:46 by tvermeil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_PRINTF_H
-# define FT_PRINTF_H
-# include <stdarg.h>
-# include <wchar.h>
-# include "libft.h"
-# include "read_conversion.h"
-# include "precision.h"
-# include "flags.h"
-# include "itoa_base.h"
-# include "itoa.h"
-# include "converter.h"
-# include "cast.h"
-# include "alias.h"
+#include "precision.h"
 
-int		ft_printf(const char *format, ...);
+char	*space_wrapper(char	*str, size_t length)
+{
+	char	*out;
+	char	*old;
 
-#endif
+	out = str;
+	if (length > 0)
+		while (ft_strlen(out) < length)
+		{
+			old = out;
+			out = ft_strjoin(" ", old);
+			free(old);
+		}
+	return (out);
+}

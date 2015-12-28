@@ -6,7 +6,7 @@
 /*   By: tvermeil <tvermeil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/16 19:58:54 by tvermeil          #+#    #+#             */
-/*   Updated: 2015/12/28 17:30:42 by tvermeil         ###   ########.fr       */
+/*   Updated: 2015/12/28 17:46:57 by tvermeil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,6 +90,6 @@ long long	get_arg(va_list args, t_conversion *conv)
 	else if (ft_strchr("cCsSp", conv->conversion) != NULL)
 		return (c_types(args, conv));
 	else
-		ft_putendl("ERREUR DE MODIFIEUR");
+		ft_putendl("ERREUR DE MODIFIEUR"); //
 	return (0);
 }

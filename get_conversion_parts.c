@@ -6,7 +6,7 @@
 /*   By: tvermeil <tvermeil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/15 13:27:20 by tvermeil          #+#    #+#             */
-/*   Updated: 2015/12/16 23:50:41 by tvermeil         ###   ########.fr       */
+/*   Updated: 2015/12/28 18:26:51 by tvermeil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,8 @@ char			*get_flags(char *str)
 	int		i;
 
 	i = 0;
-	while (str[i] == '#' || str[i] == '0' || str[i] == '-' || str[i] == '+')
+	while (str[i] == '#' || str[i] == '0' || str[i] == '-' || str[i] == '+'
+			|| str[i] == ' ')
 		i++;
 	return (ft_strsub(str, 0, i));
 }

@@ -6,7 +6,7 @@
 /*   By: tvermeil <tvermeil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/18 19:02:28 by tvermeil          #+#    #+#             */
-/*   Updated: 2015/12/18 19:05:55 by tvermeil         ###   ########.fr       */
+/*   Updated: 2015/12/28 17:15:11 by tvermeil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,11 @@ static char	*convert_strings(long long arg, t_conversion *conv)
 
 	op = conv->conversion;
 	if (op == 's')
+	{
+		if ((char *)arg == NULL)
+			return (ft_strdup("(null)"));
 		return (ft_strdup((char *)arg));
+	}
 	ft_putendl("erreur de conversion decimal");
 	return (NULL);
 }

@@ -1,28 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf.h                                        :+:      :+:    :+:   */
+/*   alias.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tvermeil <tvermeil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/12/15 10:30:55 by tvermeil          #+#    #+#             */
-/*   Updated: 2015/12/28 16:37:15 by tvermeil         ###   ########.fr       */
+/*   Created: 2015/12/28 16:26:20 by tvermeil          #+#    #+#             */
+/*   Updated: 2015/12/28 16:36:47 by tvermeil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_PRINTF_H
-# define FT_PRINTF_H
-# include <stdarg.h>
-# include <wchar.h>
-# include "libft.h"
-# include "read_conversion.h"
-# include "flags.h"
-# include "itoa_base.h"
-# include "itoa.h"
-# include "converter.h"
-# include "cast.h"
-# include "alias.h"
+#ifndef ALIAS_H
+# define ALIAS_H
+# include "printf.h"
 
-int		ft_printf(const char *format, ...);
+void	resolve_alias(t_conversion *conv);
 
 #endif

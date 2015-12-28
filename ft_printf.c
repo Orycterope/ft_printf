@@ -6,7 +6,7 @@
 /*   By: tvermeil <tvermeil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/15 10:27:43 by tvermeil          #+#    #+#             */
-/*   Updated: 2015/12/18 19:03:22 by tvermeil         ###   ########.fr       */
+/*   Updated: 2015/12/28 16:37:58 by tvermeil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,7 @@ static char	*process_conversion(char *str, va_list args, int *length, char **end
 	}
 	argument = get_arg(args, conv);
 	remove_me = get_converted_string(argument, conv);
+	resolve_alias(conv);
 	remove_me = process_flags(remove_me, conv);
 	**end = '\0';
 	*length += ft_strlen(remove_me);

@@ -6,7 +6,7 @@
 /*   By: tvermeil <tvermeil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/16 19:04:36 by tvermeil          #+#    #+#             */
-/*   Updated: 2015/12/28 19:01:58 by tvermeil         ###   ########.fr       */
+/*   Updated: 2015/12/28 21:12:25 by tvermeil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,8 @@ static char	*sign_wrapper(char *str, t_conversion *conv)
 {
 	char	*out;
 
+	if (ft_strchr("ouxX", conv->conversion) != NULL)
+		return (str);
 	out = str;
 	if (*str != '-')
 	{
@@ -71,7 +73,8 @@ static char	*zero_wrapper(char *str, t_conversion *conv)
 	out = ft_strdup(str + ft_strlen(left_part));
 	free(str);
 	length = ft_atoi(conv->width);
-	while (ft_strlen(out) + ft_strlen(left_part) < length && *(conv->precision) == 0)
+	while (ft_strlen(out) + ft_strlen(left_part) < length
+			&& *(conv->precision) == 0)
 	{
 			old = out;
 			out = ft_strjoin("0", old);
@@ -89,7 +92,7 @@ static char	*hash_wrapper(char *str, t_conversion *conv)
 	char	*out;
 
 	out = str;
-	if (conv->conversion == 'o')
+	if (conv->conversion == 'o' && *out != '0')
 	{
 		out = ft_strjoin("0", str);
 		free(str);
@@ -115,13 +118,12 @@ char		*process_flags(char *str, t_conversion *conv)
 	if (ft_strchr(conv->flags, '+') != NULL
 			|| ft_strchr(conv->flags, ' ') != NULL)
 		out = sign_wrapper(out, conv);
+	if (ft_strchr(conv->flags, '#') != NULL)
+		out = hash_wrapper(out, conv);
 	if (ft_strchr(conv->flags, '-') != NULL)
 		out = minus_wrapper(out, conv);
 	else if (ft_strchr(conv->flags, '0') != NULL)
 		out = zero_wrapper(out, conv);
-	if (ft_strchr(conv->flags, '#') != NULL
-			&& ft_strchr(conv->flags, '0') != NULL)
-		out = hash_wrapper(out, conv);
 	out = space_wrapper(out, ft_atoi(conv->width));
 	return (out);
 }

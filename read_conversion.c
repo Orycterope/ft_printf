@@ -6,7 +6,7 @@
 /*   By: tvermeil <tvermeil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/16 16:40:31 by tvermeil          #+#    #+#             */
-/*   Updated: 2015/12/16 17:26:47 by tvermeil         ###   ########.fr       */
+/*   Updated: 2015/12/28 21:29:02 by tvermeil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ t_conversion	*save_conversion_format(char *str)
 	}
 	i++;
 	conv->length = i;
-	return (conv);
+	return (resolve_alias(conv));
 }
 
 void			free_conversion_format(t_conversion *conv)

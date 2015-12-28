@@ -1,23 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   cast.c                                             :+:      :+:    :+:   */
+/*   alias.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tvermeil <tvermeil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/12/16 19:58:54 by tvermeil          #+#    #+#             */
-/*   Updated: 2015/12/28 16:39:11 by tvermeil         ###   ########.fr       */
+/*   Created: 2015/12/28 21:30:20 by tvermeil          #+#    #+#             */
+/*   Updated: 2015/12/28 21:32:26 by tvermeil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cast.h"
+#include "alias.h"
 
-void	resolve_alias(t_conversion *conv)
+t_conversion	*resolve_alias(t_conversion *conv)
 {
 	char	*newflags;
 
 	if (conv == NULL)
-		return;
+		return (NULL);
 	if (ft_strchr("DOUCS", conv->conversion) != NULL)
 	{
 		free(conv->modifier);
@@ -33,4 +33,5 @@ void	resolve_alias(t_conversion *conv)
 		conv->modifier = ft_strdup("l");
 		conv->conversion = 'x';
 	}
+	return (conv);
 }

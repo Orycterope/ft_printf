@@ -6,7 +6,7 @@
 /*   By: tvermeil <tvermeil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/18 19:02:28 by tvermeil          #+#    #+#             */
-/*   Updated: 2015/12/28 17:47:41 by tvermeil         ###   ########.fr       */
+/*   Updated: 2015/12/29 22:10:13 by tvermeil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,19 @@ static char	*convert_decimals(long long arg, t_conversion *conv)
 	return (NULL);
 }
 
+static char *convert_chars(long long arg, t_conversion *conv)
+{
+	char	*out;
+	size_t	length;
+
+	length = 1;
+	if (conv->conversion == 'C')
+		length = 4; //2 ?
+	out = ft_strnew(length + 1);
+	ft_memcpy(out, &arg, length);
+	return (out);
+}
+
 static char	*convert_strings(long long arg, t_conversion *conv)
 {
 	char	op;
@@ -52,6 +65,8 @@ char		*get_converted_string(long long arg, t_conversion *conv)
 		return (convert_decimals(arg, conv));
 	else if (ft_strchr("s", conv->conversion) != NULL)
 		return (convert_strings(arg, conv));
+	else if (ft_strchr("cC", conv->conversion) != NULL)
+		return (convert_chars(arg, conv));
 	ft_putendl("format non prit en charge"); //
 	return (NULL);
 }

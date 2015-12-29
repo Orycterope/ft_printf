@@ -6,25 +6,11 @@
 /*   By: tvermeil <tvermeil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/16 19:04:36 by tvermeil          #+#    #+#             */
-/*   Updated: 2015/12/28 21:12:25 by tvermeil         ###   ########.fr       */
+/*   Updated: 2015/12/29 20:04:48 by tvermeil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "flags.h"
-
-static char *get_left_part(char *str)
-{
-	char	*left_part;
-	int		i;
-
-	left_part = ft_strdup(str);
-	i = 0;
-	while (str[i] == '0' || str[i] == 'x' || str[i] == 'X'
-			|| str[i] == '+' || str[i] == '-' || str[i] == ' ')
-		i++;
-	left_part[i] = '\0';
-	return (left_part);
-}
 
 static char	*sign_wrapper(char *str, t_conversion *conv)
 {
@@ -59,31 +45,6 @@ static char	*minus_wrapper(char	*str, t_conversion *conv)
 			out = ft_strjoin(old, " ");
 			free(old);
 		}
-	return (out);
-}
-
-static char	*zero_wrapper(char *str, t_conversion *conv)
-{
-	size_t	length;
-	char	*out;
-	char	*old;
-	char	*left_part;
-
-	left_part = get_left_part(str);
-	out = ft_strdup(str + ft_strlen(left_part));
-	free(str);
-	length = ft_atoi(conv->width);
-	while (ft_strlen(out) + ft_strlen(left_part) < length
-			&& *(conv->precision) == 0)
-	{
-			old = out;
-			out = ft_strjoin("0", old);
-			free(old);
-	}
-	old = out;
-	out = ft_strjoin(left_part, old);
-	free(old);
-	free(left_part);
 	return (out);
 }
 
@@ -122,8 +83,9 @@ char		*process_flags(char *str, t_conversion *conv)
 		out = hash_wrapper(out, conv);
 	if (ft_strchr(conv->flags, '-') != NULL)
 		out = minus_wrapper(out, conv);
-	else if (ft_strchr(conv->flags, '0') != NULL)
-		out = zero_wrapper(out, conv);
+	else if (ft_strchr(conv->flags, '0') != NULL
+			&& !(ft_strchr("diouxX", conv->conversion) && *(conv->precision)))
+		out = zero_wrapper(out, ft_atoi(conv->width));
 	out = space_wrapper(out, ft_atoi(conv->width));
 	return (out);
 }

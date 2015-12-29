@@ -6,7 +6,7 @@
 #    By: tvermeil <tvermeil@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/12/18 19:13:31 by tvermeil          #+#    #+#              #
-#    Updated: 2015/12/28 19:03:41 by tvermeil         ###   ########.fr        #
+#    Updated: 2015/12/29 20:03:33 by tvermeil         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,6 +18,7 @@ SRCS =     	cast.c \
 			alias.c \
 			converter.c \
 			flags.c \
+			wrapper.c \
 			precision.c \
 			ft_printf.c \
 			get_conversion_parts.c \

@@ -23,32 +23,19 @@ static int	get_next_precent_position(char *str)
 	return (i);
 }
 
-static char	*process_conversion(char *str, va_list args, int *length, char **end)
+static int manage_error(char *insert, char **str, int position)
 {
-	/* Dummy function */
-
-	char			*remove_me;
-	long long		argument;
-	t_conversion	*conv;
-
-	conv = save_conversion_format(str);
-	if (conv == NULL)
+	if (insert == NULL)
 	{
-		*length += 1;
-		return (NULL);
+		(*str)[position] = '\0';
+		free(insert);
+		return (1);
 	}
-	argument = get_arg(args, conv);
-	remove_me = get_converted_string(argument, conv);
-	remove_me = process_precision(remove_me, conv);
-	remove_me = process_flags(remove_me, conv);
-	**end = '\0';
-	*length += ft_strlen(remove_me);
-	*end += conv->length;
-	return (remove_me);
+	return (0);
 }
 
 
-static void replace_conversion(char **str, va_list args)
+static int replace_conversion(char **str, va_list args)
 {
 	char	*s2;
 	char	*old1;
@@ -63,26 +50,30 @@ static void replace_conversion(char **str, va_list args)
 		old1 = *str;
 		s2 = &((*str)[i]);
 		insert = process_conversion(s2, args, &i, &s2);
-		if (insert != NULL)
-		{
-			old2 = ft_strjoin(*str, insert);
-			free(insert);
-			*str = ft_strjoin(old2, s2);
-			free(old1);
-			free(old2);
-			i += get_next_precent_position(&((*str)[i]));
-		}
+		if (manage_error(insert, str, i))
+			return (1);
+		old2 = ft_strjoin(*str, insert);
+		free(insert);
+		*str = ft_strjoin(old2, s2);
+		free(old1);
+		free(old2);
+		i += get_next_precent_position(&((*str)[i]));
 	}
+	return (0);
 }
 
 int			ft_printf(const char *format, ...)
 {
 	va_list args;
 	int		count;
+	int 	error;
 
 	va_start(args, format);
-	replace_conversion((char **)&format, args);
-	count = ft_strlen(format);
+	error = replace_conversion((char **)&format, args);
+	if (error)
+		count = -1;
+	else
+		count = ft_strlen(format);
 	ft_putstr(format);
 	free((void*)format);
 	va_end(args);

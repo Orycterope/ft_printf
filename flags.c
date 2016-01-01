@@ -75,6 +75,8 @@ char		*process_flags(char *str, t_conversion *conv)
 {
 	char	*out;
 
+	if (str == NULL)
+		return (NULL);
 	out = str;
 	if (ft_strchr(conv->flags, '+') != NULL
 			|| ft_strchr(conv->flags, ' ') != NULL)

@@ -17,6 +17,7 @@ LDFLAGS += -L libft -lft
 SRCS =     	cast.c \
 			alias.c \
 			converter.c \
+			utf.c \
 			flags.c \
 			wrapper.c \
 			precision.c \

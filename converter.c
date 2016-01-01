@@ -31,32 +31,13 @@ static char	*convert_decimals(long long arg, t_conversion *conv)
 	return (NULL);
 }
 
-static long long convert_utf(wint_t arg) //long long suffisant ?
-{
-	unsigned char power;
-	int rang;
-	unsigned long long out;
-
-	if (arg <= 0x7F)
-		return (arg);
-	power = 0x3F;
-	rang = 0;
-	out = 0;
-	while (arg > (wint_t)power)
-	{
-		out += (long long)((arg & 0x3F) | 0x80) << (rang++ * 8);
-		power /= 2;
-		arg >>= 6;
-	}
-	out += (long long)((unsigned char)(~power << 1) | arg) << (rang * 8);
-	return (out);
-}
-
 static char *convert_chars(long long arg, t_conversion *conv)
 {
 	char	*out;
 	size_t	length;
 
+	if (arg >= 0x80000000)
+		return (NULL);
 	length = 1;
 	if (ft_strchr(conv->modifier, 'l'))
 	{
@@ -94,4 +75,31 @@ char		*get_converted_string(long long arg, t_conversion *conv)
 		return (convert_chars(arg, conv));
 	ft_putendl("format non prit en charge"); //
 	return (NULL);
+}
+
+char		*process_conversion(char *str, va_list args, int *length, char **end)
+{
+	/* Dummy function */
+
+	char			*remove_me;
+	long long		argument;
+	t_conversion	*conv;
+
+	conv = save_conversion_format(str);
+	if (conv == NULL)
+	{
+		*length += 1;
+		return (NULL);
+	}
+	argument = get_arg(args, conv);
+	remove_me = get_converted_string(argument, conv);
+	remove_me = process_precision(remove_me, conv);
+	remove_me = process_flags(remove_me, conv);
+	if (remove_me != NULL)
+	{
+		**end = '\0';
+		*length += ft_strlen(remove_me);
+		*end += conv->length;
+	}
+	return (remove_me);
 }

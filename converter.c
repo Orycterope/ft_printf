@@ -33,20 +33,22 @@ static char	*convert_decimals(long long arg, t_conversion *conv)
 
 static long long convert_utf(wint_t arg) //long long suffisant ?
 {
-	char power;
-	long long rang;
-	long long out;
+	unsigned char power;
+	int rang;
+	unsigned long long out;
 
-	power = 0x7F;
+	if (arg <= 0x7F)
+		return (arg);
+	power = 0x3F;
 	rang = 0;
 	out = 0;
 	while (arg > (wint_t)power)
 	{
-		out += (((char)arg & 0x3F) | 0x80) << (rang++ * 8);
+		out += (long long)((arg & 0x3F) | 0x80) << (rang++ * 8);
 		power /= 2;
 		arg >>= 6;
 	}
-	out += ((unsigned char)~power | arg) << (rang * 8);
+	out += (long long)((unsigned char)(~power << 1) | arg) << (rang * 8);
 	return (out);
 }
 
@@ -58,7 +60,7 @@ static char *convert_chars(long long arg, t_conversion *conv)
 	length = 1;
 	if (ft_strchr(conv->modifier, 'l'))
 	{
-		length = sizeof(wint_t);
+		length = sizeof(long long);
 		arg = convert_utf(arg);
 	}
 	out = ft_strnew(length + 1);

@@ -42,6 +42,7 @@ SRCS =     	cast.c \
 			libft/ft_strrchr.c \
 			libft/ft_strstr.c \
 			libft/ft_strnstr.c \
+			libft/ft_strrev.c \
 			libft/ft_strcmp.c \
 			libft/ft_strncmp.c \
 			libft/ft_atoi.c \

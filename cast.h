@@ -13,6 +13,7 @@
 #ifndef CAST_H
 # define CAST_H
 # include "ft_printf.h"
+# include <stdint.h>
 
 long long	get_arg(va_list args, t_conversion *conv);
 

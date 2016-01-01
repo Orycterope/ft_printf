@@ -12,7 +12,9 @@
 
 #ifndef DECIMALS_H
 # define DECIMALS_H
+# include "libft.h"
 # include "ft_printf.h"
+# include <limits.h>
 
 char	*get_converted_string(long long arg, t_conversion *conv);
 

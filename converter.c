@@ -31,16 +31,39 @@ static char	*convert_decimals(long long arg, t_conversion *conv)
 	return (NULL);
 }
 
+static long long convert_utf(wint_t arg) //long long suffisant ?
+{
+	char power;
+	long long rang;
+	long long out;
+
+	power = 0x7F;
+	rang = 0;
+	out = 0;
+	while (arg > (wint_t)power)
+	{
+		out += (((char)arg & 0x3F) | 0x80) << (rang++ * 8);
+		power /= 2;
+		arg >>= 6;
+	}
+	out += ((unsigned char)~power | arg) << (rang * 8);
+	return (out);
+}
+
 static char *convert_chars(long long arg, t_conversion *conv)
 {
 	char	*out;
 	size_t	length;
 
 	length = 1;
-	if (conv->conversion == 'C')
-		length = 4; //2 ?
+	if (ft_strchr(conv->modifier, 'l'))
+	{
+		length = sizeof(wint_t);
+		arg = convert_utf(arg);
+	}
 	out = ft_strnew(length + 1);
 	ft_memcpy(out, &arg, length);
+	ft_strrev(out);
 	return (out);
 }
 

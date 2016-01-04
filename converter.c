@@ -59,6 +59,8 @@ static char	*convert_strings(long long arg, t_conversion *conv)
 	{
 		if ((char *)arg == NULL)
 			return (ft_strdup("(null)"));
+		if (ft_strchr(conv->modifier, 'l'))
+			return (convert_utf_string((wint_t *)arg));
 		return (ft_strdup((char *)arg));
 	}
 	ft_putendl("erreur de conversion string"); //

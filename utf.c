@@ -7,6 +7,8 @@ char		*convert_utf_string(wint_t *endpoints_list)
 	char		*new;
 	long long	utf;
 
+	if (*endpoints_list == '\0')
+		return (ft_strdup(""));
 	out = NULL;
 	while (*endpoints_list != (wint_t)0)
 	{

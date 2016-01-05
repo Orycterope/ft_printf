@@ -6,11 +6,11 @@
 /*   By: tvermeil <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/26 13:18:51 by tvermeil          #+#    #+#             */
-/*   Updated: 2015/12/18 17:58:09 by tvermeil         ###   ########.fr       */
+/*   Updated: 2016/01/05 14:23:20 by tvermeil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "itoa.h"
 
 static int	get_size(long long n)
 {
@@ -33,6 +33,8 @@ char		*itoa(long long n)
 	int		is_neg;
 	int		len;
 
+	if (n == LLONG_MIN)
+		return (ft_strdup("-9223372036854775808"));
 	len = get_size(n);
 	str = (char *)malloc(sizeof(char) * len);
 	if (str == NULL)

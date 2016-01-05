@@ -6,13 +6,14 @@
 /*   By: tvermeil <tvermeil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/18 17:57:55 by tvermeil          #+#    #+#             */
-/*   Updated: 2015/12/18 18:06:43 by tvermeil         ###   ########.fr       */
+/*   Updated: 2016/01/05 14:22:56 by tvermeil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef ITOA_H
 # define ITOA_H
 # include "libft.h"
+# include <limits.h>
 
 char		*itoa(long long n);
 

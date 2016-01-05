@@ -6,7 +6,7 @@
 #    By: tvermeil <tvermeil@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/12/18 19:13:31 by tvermeil          #+#    #+#              #
-#    Updated: 2015/12/29 20:03:33 by tvermeil         ###   ########.fr        #
+#    Updated: 2016/01/05 12:57:16 by tvermeil         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,6 +23,7 @@ SRCS =     	cast.c \
 			precision.c \
 			ft_printf.c \
 			get_conversion_parts.c \
+			get_string.c \
 			itoa.c \
 			itoa_base.c \
 			read_conversion.c \

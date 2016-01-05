@@ -6,7 +6,7 @@
 /*   By: tvermeil <tvermeil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/15 10:30:55 by tvermeil          #+#    #+#             */
-/*   Updated: 2015/12/28 19:03:18 by tvermeil         ###   ########.fr       */
+/*   Updated: 2016/01/05 12:57:43 by tvermeil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@
 # include "converter.h"
 # include "cast.h"
 # include "alias.h"
+# include "get_string.h"
 
 int		ft_printf(const char *format, ...);
 

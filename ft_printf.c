@@ -6,7 +6,7 @@
 /*   By: tvermeil <tvermeil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/15 10:27:43 by tvermeil          #+#    #+#             */
-/*   Updated: 2015/12/29 20:43:22 by tvermeil         ###   ########.fr       */
+/*   Updated: 2016/01/05 13:17:41 by tvermeil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,9 @@ static int	get_next_precent_position(char *str)
 	int		i;
 
 	i = 0;
-	while (str[i] != '\0' && (str[i] != '%' ||
-			(str[i] == '%' && (str[i + 1] == '%' || str[i - 1] == '%'))))
+	//while (str[i] != '\0' && (str[i] != '%' ||
+	//		(str[i] == '%' && (str[i + 1] == '%' || str[i - 1] == '%'))))
+	while (str[i] != '\0' && str[i] != '%')
 		i++;
 	return (i);
 }
@@ -49,7 +50,7 @@ static int replace_conversion(char **str, va_list args)
 	{
 		old1 = *str;
 		s2 = &((*str)[i]);
-		insert = process_conversion(s2, args, &i, &s2);
+		insert = get_processed_str(s2, args, &i, &s2);
 		if (manage_error(insert, str, i))
 			return (1);
 		old2 = ft_strjoin(*str, insert);
@@ -66,7 +67,7 @@ int			ft_printf(const char *format, ...)
 {
 	va_list args;
 	int		count;
-	int 	error;
+	int		error;
 
 	va_start(args, format);
 	error = replace_conversion((char **)&format, args);

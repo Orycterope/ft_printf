@@ -6,7 +6,7 @@
 /*   By: tvermeil <tvermeil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/18 19:02:28 by tvermeil          #+#    #+#             */
-/*   Updated: 2016/01/05 12:46:32 by tvermeil         ###   ########.fr       */
+/*   Updated: 2016/01/05 14:39:40 by tvermeil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,8 @@ static char *convert_chars(long long arg, t_conversion *conv)
 
 	if (arg >= 0x80000000)
 		return (NULL);
+	if (arg == 0)
+		return (ft_strdup("\xFF"));
 	length = 1;
 	if (ft_strchr(conv->modifier, 'l'))
 	{

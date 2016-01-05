@@ -6,7 +6,7 @@
 #    By: tvermeil <tvermeil@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/12/18 19:13:31 by tvermeil          #+#    #+#              #
-#    Updated: 2016/01/05 12:57:16 by tvermeil         ###   ########.fr        #
+#    Updated: 2016/01/05 15:54:12 by tvermeil         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -55,6 +55,7 @@ SRCS =     	cast.c \
 			libft/ft_isprint.c \
 			libft/ft_toupper.c \
 			libft/ft_tolower.c \
+			libft/ft_tostr.c \
 			libft/ft_memalloc.c \
 			libft/ft_memdel.c \
 			libft/ft_strnew.c \
@@ -73,6 +74,7 @@ SRCS =     	cast.c \
 			libft/ft_itoa.c \
 			libft/ft_putchar.c \
 			libft/ft_putstr.c \
+			libft/ft_putstr_spec.c \
 			libft/ft_putendl.c \
 			libft/ft_putnbr.c \
 			libft/ft_putchar_fd.c \

@@ -6,7 +6,7 @@
 /*   By: tvermeil <tvermeil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/15 10:27:43 by tvermeil          #+#    #+#             */
-/*   Updated: 2016/01/05 13:17:41 by tvermeil         ###   ########.fr       */
+/*   Updated: 2016/01/05 14:51:38 by tvermeil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,7 +75,7 @@ int			ft_printf(const char *format, ...)
 		count = -1;
 	else
 		count = ft_strlen(format);
-	ft_putstr(format);
+	ft_putstr_spec((char *)format);
 	free((void*)format);
 	va_end(args);
 	return (count);

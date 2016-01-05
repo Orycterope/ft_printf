@@ -6,7 +6,7 @@
 /*   By: tvermeil <tvermeil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/16 19:04:36 by tvermeil          #+#    #+#             */
-/*   Updated: 2015/12/29 20:45:26 by tvermeil         ###   ########.fr       */
+/*   Updated: 2016/01/05 16:36:00 by tvermeil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ static char	*sign_wrapper(char *str, t_conversion *conv)
 {
 	char	*out;
 
-	if (ft_strchr("ouxX", conv->conversion) != NULL)
+	if (ft_strchr("ouxXcs", conv->conversion) != NULL)
 		return (str);
 	out = str;
 	if (*str != '-')
@@ -58,12 +58,13 @@ static char	*hash_wrapper(char *str, t_conversion *conv)
 		out = ft_strjoin("0", str);
 		free(str);
 	}
-	else if (conv->conversion == 'x')
+	else if ((conv->conversion == 'x' && ft_atoi(str))
+			|| conv->conversion == 'p')
 	{
 		out = ft_strjoin("0x", str);
 		free(str);
 	}
-	else if (conv->conversion == 'X')
+	else if (conv->conversion == 'X' && ft_atoi(str))
 	{
 		out = ft_strjoin("0X", str);
 		free(str);
@@ -76,7 +77,7 @@ char		*process_flags(char *str, t_conversion *conv)
 	char	*out;
 
 	if (str == NULL)
-		return (NULL);
+		str = ft_strdup("");
 	out = str;
 	if (ft_strchr(conv->flags, '+') != NULL
 			|| ft_strchr(conv->flags, ' ') != NULL)

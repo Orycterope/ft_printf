@@ -6,7 +6,7 @@
 /*   By: tvermeil <tvermeil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/18 19:02:28 by tvermeil          #+#    #+#             */
-/*   Updated: 2016/01/05 14:39:40 by tvermeil         ###   ########.fr       */
+/*   Updated: 2016/01/05 16:23:57 by tvermeil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ static char	*convert_decimals(long long arg, t_conversion *conv)
 		return (itoa_base(arg, "0123456789"));
 	else if (op == 'o' || op == 'O')
 		return (itoa_base(arg, "01234567"));
-	else if (op == 'x')
+	else if (op == 'x' || op == 'p')
 		return (itoa_base(arg, "0123456789abcdef"));
 	else if (op == 'X')
 		return (itoa_base(arg, "0123456789ABCDEF"));
@@ -71,7 +71,7 @@ static char	*convert_strings(long long arg, t_conversion *conv)
 
 char		*get_converted_string(long long arg, t_conversion *conv)
 {
-	if (ft_strchr("dDioOuUxX", conv->conversion) != NULL)
+	if (ft_strchr("dDioOuUxXp", conv->conversion) != NULL)
 		return (convert_decimals(arg, conv));
 	else if (ft_strchr("s", conv->conversion) != NULL)
 		return (convert_strings(arg, conv));

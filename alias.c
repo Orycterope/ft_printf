@@ -6,7 +6,7 @@
 /*   By: tvermeil <tvermeil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/28 21:30:20 by tvermeil          #+#    #+#             */
-/*   Updated: 2015/12/28 21:32:26 by tvermeil         ###   ########.fr       */
+/*   Updated: 2016/01/05 16:11:53 by tvermeil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ t_conversion	*resolve_alias(t_conversion *conv)
 		conv->flags = newflags;
 		free(conv->modifier);
 		conv->modifier = ft_strdup("l");
-		conv->conversion = 'x';
+		//conv->conversion = 'x';
 	}
 	return (conv);
 }

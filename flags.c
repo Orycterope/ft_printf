@@ -6,7 +6,7 @@
 /*   By: tvermeil <tvermeil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/16 19:04:36 by tvermeil          #+#    #+#             */
-/*   Updated: 2016/01/05 16:36:00 by tvermeil         ###   ########.fr       */
+/*   Updated: 2016/01/05 17:44:44 by tvermeil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,7 +87,8 @@ char		*process_flags(char *str, t_conversion *conv)
 	if (ft_strchr(conv->flags, '-') != NULL)
 		out = minus_wrapper(out, conv);
 	else if (ft_strchr(conv->flags, '0') != NULL
-			&& !(ft_strchr("diouxX", conv->conversion) && *(conv->precision)))
+			&& (!(ft_strchr("diouxX", conv->conversion) && *(conv->precision))
+			|| conv->conversion == 0))
 		out = zero_wrapper(out, ft_atoi(conv->width));
 	out = space_wrapper(out, ft_atoi(conv->width));
 	return (out);

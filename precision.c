@@ -6,7 +6,7 @@
 /*   By: tvermeil <tvermeil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/28 18:57:09 by tvermeil          #+#    #+#             */
-/*   Updated: 2015/12/29 20:51:35 by tvermeil         ###   ########.fr       */
+/*   Updated: 2016/01/05 17:33:11 by tvermeil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,11 @@ char		*process_precision(char *str, t_conversion *conv)
 	if (*(conv->precision++) == '.')
 	{
 		precision = ft_atoi(conv->precision);
-		if (ft_strchr("diouxX", conv->conversion) != NULL)
-			out = zero_wrapper(out, precision);
+		if (ft_strchr("diouxXp", conv->conversion)
+			&& ft_atoi(str) == 0 && precision == 0)
+			*str = '\0';
+		else if (ft_strchr("diouxXp", conv->conversion) != NULL)
+			out = zero_wrapper(out, precision + (ft_strchr(str, '-') != NULL));
 		else if (conv->conversion == 's')
 		{
 			old = out;

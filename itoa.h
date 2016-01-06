@@ -13,7 +13,6 @@
 #ifndef ITOA_H
 # define ITOA_H
 # include "libft.h"
-# include <limits.h>
 
 char		*itoa(long long n);
 

@@ -18,11 +18,8 @@ static int	get_size(long long n)
 
 	c = 1;
 	if (n < 0)
-	{
-		n = -n;
 		c++;
-	}
-	while ((n /= 10) > 0)
+	while ((n /= 10) != 0)
 		c++;
 	return (c + 1);
 }
@@ -33,18 +30,15 @@ char		*itoa(long long n)
 	int		is_neg;
 	int		len;
 
-	if (n == LLONG_MIN)
-		return (ft_strdup("-9223372036854775808"));
 	len = get_size(n);
 	str = (char *)malloc(sizeof(char) * len);
 	if (str == NULL)
 		return (NULL);
 	is_neg = (n < 0) ? 1 : 0;
-	n = (n < 0) ? -n : n;
 	str[--len] = 0;
 	while (len-- > 0)
 	{
-		str[len] = (n % 10) + '0';
+		str[len] = (n % 10) * (n < 0 ? -1: 1) + '0';
 		n /= 10;
 	}
 	if (is_neg)

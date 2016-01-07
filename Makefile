@@ -6,7 +6,7 @@
 #    By: tvermeil <tvermeil@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/12/18 19:13:31 by tvermeil          #+#    #+#              #
-#    Updated: 2016/01/05 15:54:12 by tvermeil         ###   ########.fr        #
+#    Updated: 2016/01/07 15:44:42 by tvermeil         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -87,8 +87,6 @@ SRCS =     	cast.c \
 			libft/ft_lstadd.c \
 			libft/ft_lstiter.c \
 			libft/ft_lstmap.c \
-
-.SILENT:
 
 OBJS = $(SRCS:.c=.o)
 

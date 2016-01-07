@@ -6,7 +6,7 @@
 /*   By: tvermeil <tvermeil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/05 12:45:35 by tvermeil          #+#    #+#             */
-/*   Updated: 2016/01/07 15:01:16 by tvermeil         ###   ########.fr       */
+/*   Updated: 2016/01/07 19:07:26 by tvermeil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,5 +50,6 @@ char		*get_processed_str(char *str, va_list args, int *length, char **end)
 		*length += ft_strlen(processed_str);
 		*end += conv->length;
 	}
+	free_conversion_format(conv);
 	return (processed_str);
 }

@@ -6,7 +6,7 @@
 /*   By: tvermeil <tvermeil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/16 19:04:36 by tvermeil          #+#    #+#             */
-/*   Updated: 2016/01/05 17:44:44 by tvermeil         ###   ########.fr       */
+/*   Updated: 2016/01/07 14:50:33 by tvermeil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ static char	*sign_wrapper(char *str, t_conversion *conv)
 {
 	char	*out;
 
-	if (ft_strchr("ouxXcs", conv->conversion) != NULL)
+	if (ft_strchr("ouxXcsp", conv->conversion) != NULL)
 		return (str);
 	out = str;
 	if (*str != '-')
@@ -30,7 +30,7 @@ static char	*sign_wrapper(char *str, t_conversion *conv)
 	return (out);
 }
 
-static char	*minus_wrapper(char	*str, t_conversion *conv)
+static char	*minus_wrapper(char *str, t_conversion *conv)
 {
 	size_t	length;
 	char	*out;

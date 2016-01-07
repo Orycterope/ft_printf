@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   utf.c                                              :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: tvermeil <tvermeil@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2016/01/07 14:56:18 by tvermeil          #+#    #+#             */
+/*   Updated: 2016/01/07 15:07:45 by tvermeil         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "utf.h"
 
 char		*convert_utf_string(wint_t *endpoints_list)
@@ -24,12 +36,11 @@ char		*convert_utf_string(wint_t *endpoints_list)
 	return (out);
 }
 
-
-long long	convert_utf(wint_t arg) //long long suffisant ?
+long long	convert_utf(wint_t arg)
 {
-	unsigned char power;
-	int rang;
-	unsigned long long out;
+	unsigned char		power;
+	int					rang;
+	unsigned long long	out;
 
 	if (arg <= 0x7F)
 		return (arg);

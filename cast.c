@@ -6,14 +6,13 @@
 /*   By: tvermeil <tvermeil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/16 19:58:54 by tvermeil          #+#    #+#             */
-/*   Updated: 2015/12/28 17:46:57 by tvermeil         ###   ########.fr       */
+/*   Updated: 2016/01/07 14:47:54 by tvermeil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cast.h"
-#include <stdio.h> //
 
-static long long d_types(va_list args, t_conversion *conv)
+static long long	d_types(va_list args, t_conversion *conv)
 {
 	if (*(conv->modifier) == 'h')
 	{
@@ -37,7 +36,7 @@ static long long d_types(va_list args, t_conversion *conv)
 		return ((long long)va_arg(args, int));
 }
 
-static long long o_types(va_list args, t_conversion *conv)
+static long long	o_types(va_list args, t_conversion *conv)
 {
 	if (*(conv->modifier) == 'h')
 	{
@@ -61,7 +60,7 @@ static long long o_types(va_list args, t_conversion *conv)
 		return ((long long)va_arg(args, unsigned));
 }
 
-static long long c_types(va_list args, t_conversion *conv)
+static long long	c_types(va_list args, t_conversion *conv)
 {
 	if ((conv->conversion == 'c' && *(conv->modifier) == 'l')
 			|| conv->conversion == 'C')
@@ -79,7 +78,7 @@ static long long c_types(va_list args, t_conversion *conv)
 		return ((long long)va_arg(args, int));
 }
 
-long long	get_arg(va_list args, t_conversion *conv)
+long long			get_arg(va_list args, t_conversion *conv)
 {
 	if (ft_strchr("DOU", conv->conversion) != NULL)
 		return ((long long)va_arg(args, long int));
@@ -89,7 +88,5 @@ long long	get_arg(va_list args, t_conversion *conv)
 		return (o_types(args, conv));
 	else if (ft_strchr("cCsSp", conv->conversion) != NULL)
 		return (c_types(args, conv));
-	else
-		ft_putendl("ERREUR DE MODIFIEUR"); //
 	return (0);
 }

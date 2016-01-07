@@ -6,16 +6,12 @@
 /*   By: tvermeil <tvermeil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/16 16:40:31 by tvermeil          #+#    #+#             */
-/*   Updated: 2016/01/05 13:13:50 by tvermeil         ###   ########.fr       */
+/*   Updated: 2016/01/07 15:05:15 by tvermeil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "read_conversion.h"
-/*
-** Fonction qui prend un pointeur sur une chaine de caracteres
-** Retourn une structure conversion qui contient les parties
-** du format de conversion
-*/
+#include "get_conversion_parts.h"
 
 t_conversion	*save_conversion_format(char *str)
 {

@@ -6,13 +6,13 @@
 /*   By: tvermeil <tvermeil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/05 12:45:35 by tvermeil          #+#    #+#             */
-/*   Updated: 2016/01/05 16:02:46 by tvermeil         ###   ########.fr       */
+/*   Updated: 2016/01/07 15:01:16 by tvermeil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_string.h"
 
-static	int check_escaped(char *str, int *length, char **end)
+static int	check_escaped(char *str, int *length, char **end)
 {
 	if (str[1] == '%')
 	{
@@ -26,8 +26,6 @@ static	int check_escaped(char *str, int *length, char **end)
 
 char		*get_processed_str(char *str, va_list args, int *length, char **end)
 {
-	/* Dummy function */
-
 	char			*processed_str;
 	long long		argument;
 	t_conversion	*conv;

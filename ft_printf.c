@@ -6,7 +6,7 @@
 /*   By: tvermeil <tvermeil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/15 10:27:43 by tvermeil          #+#    #+#             */
-/*   Updated: 2016/01/05 14:51:38 by tvermeil         ###   ########.fr       */
+/*   Updated: 2016/01/07 14:59:55 by tvermeil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,14 +17,12 @@ static int	get_next_precent_position(char *str)
 	int		i;
 
 	i = 0;
-	//while (str[i] != '\0' && (str[i] != '%' ||
-	//		(str[i] == '%' && (str[i + 1] == '%' || str[i - 1] == '%'))))
 	while (str[i] != '\0' && str[i] != '%')
 		i++;
 	return (i);
 }
 
-static int manage_error(char *insert, char **str, int position)
+static int	manage_error(char *insert, char **str, int position)
 {
 	if (insert == NULL)
 	{
@@ -35,8 +33,7 @@ static int manage_error(char *insert, char **str, int position)
 	return (0);
 }
 
-
-static int replace_conversion(char **str, va_list args)
+static int	replace_conversion(char **str, va_list args)
 {
 	char	*s2;
 	char	*old1;
